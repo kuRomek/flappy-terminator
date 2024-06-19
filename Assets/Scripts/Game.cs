@@ -58,6 +58,7 @@ public class Game : MonoBehaviour
         _startScreen.Close();
         _endGameScreen.Close();
         _scoreView.HideBestScore();
+        _scoreView.Reset();
 
         _player.Reset();
         _enemySpawner.Reset();

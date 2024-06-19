@@ -1,10 +1,8 @@
 using System;
-using TMPro;
 using UnityEngine;
 
 public class StartScreen : Window
 {
-    [SerializeField] private TextMeshProUGUI _bestScore;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _clickSound;
 

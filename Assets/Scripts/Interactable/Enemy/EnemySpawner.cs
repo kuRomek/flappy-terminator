@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -16,6 +17,9 @@ public class EnemySpawner : MonoBehaviour
     private Collider2D _spawningArea;
     private Coroutine _spawning;
 
+    public event Action<int> OnEnemyDied;
+    public event Action<int> OnEnemyDisappeared;
+
     private void Awake()
     {
         _defaultSpawningRate = _spawningRate;
@@ -30,8 +34,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _spawningRate = Mathf.MoveTowards(_spawningRate, _minSpawningRate, _player.Mover.Acceleration / 5f * Time.fixedDeltaTime);
-        _shootingRate = Mathf.MoveTowards(_shootingRate, _minShootingRate, _player.Mover.Acceleration / 5f * Time.fixedDeltaTime);
+        _spawningRate = Mathf.MoveTowards(_spawningRate, _minSpawningRate, _player.Mover.Acceleration * Time.fixedDeltaTime);
+        _shootingRate = Mathf.MoveTowards(_shootingRate, _minShootingRate, _player.Mover.Acceleration * Time.fixedDeltaTime);
     }
 
     private IEnumerator BeginSpawning()
@@ -43,9 +47,23 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(_spawningRate);
 
             Enemy newEnemy = _enemyPool.Get();
-            newEnemy.transform.position = new Vector3(transform.position.x, Random.Range(_spawningArea.bounds.min.y, _spawningArea.bounds.max.y), transform.position.z);
+            newEnemy.transform.position = new Vector3(transform.position.x, UnityEngine.Random.Range(_spawningArea.bounds.min.y, _spawningArea.bounds.max.y), transform.position.z);
             newEnemy.Shooter.SetShootingRate(_shootingRate);
+            newEnemy.OnDying += GetPointsForKill;
+            newEnemy.OnDisappearing += GetPointsForSkip;
         }
+    }
+
+    private void GetPointsForKill(Enemy enemy)
+    {
+        enemy.OnDying -= GetPointsForKill;
+        OnEnemyDied?.Invoke(2);
+    }
+
+    private void GetPointsForSkip(Enemy enemy)
+    {
+        enemy.OnDisappearing -= GetPointsForSkip;
+        OnEnemyDisappeared?.Invoke(1);
     }
 
     public void Reset()

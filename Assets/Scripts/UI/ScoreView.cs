@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ScoreView : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _score;
+    [SerializeField] private TextMeshProUGUI _currentScore;
     [SerializeField] private TextMeshProUGUI _bestScore;
     [SerializeField] private ScoreCounter _scoreCounter;
 
@@ -19,7 +19,7 @@ public class ScoreView : MonoBehaviour
 
     private void UpdateView()
     {
-        _score.text = _scoreCounter.Score.ToString();
+        _currentScore.text = _scoreCounter.Score.ToString();
     }
 
     public void ShowBestScore()
@@ -31,5 +31,10 @@ public class ScoreView : MonoBehaviour
     public void HideBestScore()
     {
         _bestScore.enabled = false;
+    }
+
+    public void Reset()
+    {
+        _scoreCounter.Reset();
     }
 }

@@ -18,10 +18,10 @@ public class EnemyPool : ObjectPool<Enemy>
     public override void Reset()
     {
         foreach (Enemy enemy in Pool)
-            enemy.Shooter.Reset();
+            enemy.Reset();
 
         foreach (Enemy enemy in BusyObjects)
-            enemy.Shooter.Reset();
+            enemy.Reset();
 
         base.Reset();
     }

@@ -7,7 +7,6 @@ public class EnemyShooter : Shooter
 
     private Coroutine _shooting;
     private float _shootingRate = 1f;
-    private float _defaultShootingRate;
 
     private void OnEnable()
     {
@@ -35,7 +34,7 @@ public class EnemyShooter : Shooter
         {
             yield return shootingRate;
 
-            SetDirection(Vector3.Normalize(_player.transform.position - transform.position));
+            SetDirection(Vector2.left);
             ShootOneBullet();
         }
     }
@@ -43,12 +42,5 @@ public class EnemyShooter : Shooter
     public void SetShootingRate(float rate)
     {
         _shootingRate = rate;
-    }
-
-    public override void Reset()
-    {
-        _shootingRate = _defaultShootingRate;
-
-        base.Reset();
     }
 }

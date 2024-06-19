@@ -100,8 +100,8 @@ GameObject:
   - component: {fileID: 8011690806375657946}
   - component: {fileID: 7821843810699676201}
   - component: {fileID: 6926278960775645125}
-  - component: {fileID: 3446309031099874347}
   - component: {fileID: 3669210592865115242}
+  - component: {fileID: 6377104875352090321}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -306,12 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bfb09a3233060a499b27bf7f1234009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: {fileID: 3446309031099874347}
   _player: {fileID: 0}
-  _audioSource: {fileID: 5966701834973164688}
-  _hitSound: {fileID: 8300000, guid: 7dddf912b39fcfe439b964bbc2efacd5, type: 3}
-  _explosionSound: {fileID: 8300000, guid: 684b314296a3130479acafa7e0a6e79d, type: 3}
-  _explosionEffect: {fileID: 7766560439827107135}
   _sprite: {fileID: 5260408231306921498}
 --- !u!114 &8011690806375657946
 MonoBehaviour:
@@ -326,7 +321,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  _playerSpeedPortion: 0.85
 --- !u!114 &7821843810699676201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,7 +335,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletPool: {fileID: 6926278960775645125}
   _bulletsOffset: 0.65
-  _audioSource: {fileID: 5966701834973164688}
   _shootSound: {fileID: 8300000, guid: df86742e6c39fbb48b986a627510946b, type: 3}
   _player: {fileID: 0}
 --- !u!114 &6926278960775645125
@@ -357,19 +350,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _object: {fileID: 0}
---- !u!114 &3446309031099874347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9161385493450664669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f29c2508463c954386d73fcc05eaedf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _max: 2
 --- !u!114 &3669210592865115242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,6 +362,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12abae4a704c2e3458e25cfea53026e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6377104875352090321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9161385493450664669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc145f7d989e0c4469f40c27d8187c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitSound: {fileID: 8300000, guid: 7dddf912b39fcfe439b964bbc2efacd5, type: 3}
+  _explosionSound: {fileID: 8300000, guid: 684b314296a3130479acafa7e0a6e79d, type: 3}
+  _explosionEffect: {fileID: 7766560439827107135}
 --- !u!1001 &2992730058895210748
 PrefabInstance:
   m_ObjectHideFlags: 0

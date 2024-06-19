@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMover), typeof(PlayerShooter), typeof(PlayerCollisionHandler))]
 public class Player : MonoBehaviour  
 {
-    [SerializeField] private ScoreCounter _scoreCounter;
     [SerializeField] private AudioClip _hitSound;
     [SerializeField] private AudioClip _explosionSound;
 
@@ -16,7 +15,6 @@ public class Player : MonoBehaviour
     
     public PlayerMover Mover => _mover;
     public PlayerShooter Shooter => _shooter;
-    public ScoreCounter ScoreCounter => _scoreCounter;
 
     public event Action OnGameOver;
 
@@ -51,6 +49,5 @@ public class Player : MonoBehaviour
     {
         _mover.Reset();
         _shooter.Reset();
-        _scoreCounter.Reset();
     }
 }
