@@ -27,7 +27,21 @@ public class Shooter : MonoBehaviour
 
     public void SetDirection(Vector2 direction)
     {
-        _direction = direction;
+        if (direction.x < 0)
+        {
+            if (direction.y < -0.5f)
+            {
+                direction.y = -0.5f;
+                direction.x = -Mathf.Sqrt(3f) / 2f;
+            }
+            else if (direction.y > 0.5f)
+            {
+                direction.y = 0.5f;
+                direction.x = -Mathf.Sqrt(3f) / 2f;
+            }
+        }
+
+        _direction = direction.normalized;
     }
 
     public void Reset()

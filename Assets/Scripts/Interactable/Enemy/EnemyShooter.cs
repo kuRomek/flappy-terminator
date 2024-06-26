@@ -34,7 +34,7 @@ public class EnemyShooter : Shooter
         {
             yield return shootingRate;
 
-            SetDirection(Vector2.left);
+            SetDirection(Vector3.Normalize(_player.transform.position - transform.position));
             ShootOneBullet();
         }
     }
